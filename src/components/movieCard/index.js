@@ -77,7 +77,7 @@ export default function MovieCard({ movie, action }) {
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
-        </Link>
+      </Link>
         
       </CardActions>
     </Card>

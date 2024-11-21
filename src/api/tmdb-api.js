@@ -134,24 +134,30 @@ export const getMovie = (args) => {
    });
   };
 
-  export const getMovieRecommendations = ({ queryKey }) => {
+  export const getRecommendationMovies = ({ queryKey }) => {
     const [, idPart] = queryKey;
+    if (!idPart || !idPart.id) {
+      throw new Error("Movie ID is required to fetch recommendations");
+    }
+  
     const { id } = idPart;
+  
     return fetch(
       `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then( (response) => {
-      if (!response.ok) {
-        return response.json().then((error) => {
-          throw new Error(error.status_message || "Something went wrong");
-        });
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-   });
+    )
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((error) => {
+            throw new Error(error.status_message || "Something went wrong");
+          });
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error;
+      });
   };
-
+  
   export const getProductionCountries = () => {
     return fetch(
       "https://api.themoviedb.org/3/movie/production_countries/list?api_key=" +

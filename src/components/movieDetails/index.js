@@ -8,7 +8,9 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
+import { Link } from 'react-router-dom';
+
 
 
 const root = {
@@ -72,6 +74,20 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         />
         <Chip label={`Released: ${movie.release_date}`} />
       </Paper>
+      <Fab
+        color="primary"
+        variant="extended"
+        component={Link}  // 使用 Link 组件跳转到推荐页面
+        to={`/movies/${movie.id}/recommendations`} // 推荐页面的路径
+        sx={{
+          position: 'fixed',
+          bottom: '1em',
+          right: '10em'
+        }}
+      >
+        <NavigationIcon />
+        Recommendations
+      </Fab>
       <Fab
         color="secondary"
         variant="extended"
