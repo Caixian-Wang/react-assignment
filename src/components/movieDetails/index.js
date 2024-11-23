@@ -91,7 +91,7 @@ const MovieDetails = ({ movie }) => {
               label={credit.name}
               sx={{ ...chip }}
               component={Link}
-              to={`/credits/${credit.id}`} // 跳转到演员详情页面
+              to={`/credits/${credit.id}/creditinf`} // 跳转到演员详情页面
               clickable
             />
           </li>
