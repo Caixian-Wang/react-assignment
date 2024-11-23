@@ -82,12 +82,30 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         sx={{
           position: 'fixed',
           bottom: '1em',
-          right: '10em'
+          right: '19.3em'
         }}
       >
         <NavigationIcon />
         Recommendations
       </Fab>
+      <Fab
+      variant="extended"
+      component={Link}  
+         to={`/movies/${movie.id}/similars`} 
+      sx={{
+        position: 'fixed',
+        bottom: '1em',
+        right: '10em',
+        backgroundColor: '#FFDE59', // 自定义背景色
+        color: '#fff', // 自定义文字颜色
+        '&:hover': {
+        backgroundColor: '#155a9c' // 自定义悬停颜色
+          }
+      }}
+>
+  <NavigationIcon />
+  Similars
+</Fab>
       <Fab
         color="secondary"
         variant="extended"
