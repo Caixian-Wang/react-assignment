@@ -85,13 +85,13 @@ const MovieDetails = ({ movie }) => {
         Cast
       </Typography>
       <Paper component="ul" sx={{ ...root }}>
-        {credits.cast.map((actor) => (
-          <li key={actor.id}>
+        {credits.cast.map((credit) => (
+          <li key={credit.id}>
             <Chip
-              label={actor.name}
+              label={credit.name}
               sx={{ ...chip }}
               component={Link}
-              to={`/actors/${actor.id}`} // 跳转到演员详情页面
+              to={`/credits/${credit.id}`} // 跳转到演员详情页面
               clickable
             />
           </li>

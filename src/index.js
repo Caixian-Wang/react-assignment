@@ -44,6 +44,7 @@ const App = () => {
             <Route path="*" element={ <Navigate to="/" /> } />
             <Route path="/movies/:id/recommendations" element={<MovieRecommendationPage />} /> 
             <Route path="/movies/:id/similars" element={<MovieSimilarPage />} /> 
+         
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
