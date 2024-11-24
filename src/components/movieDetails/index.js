@@ -91,7 +91,7 @@ const MovieDetails = ({ movie }) => {
               label={credit.name}
               sx={{ ...chip }}
               component={Link}
-              to={`/credits/${credit.id}/creditinf`} // 跳转到演员详情页面
+              to={`/credits/${credit.id}/creditinf`} 
               clickable
             />
           </li>
@@ -107,6 +107,9 @@ const MovieDetails = ({ movie }) => {
           position: "fixed",
           bottom: "1em",
           right: "19.3em",
+          "&:hover": {
+            backgroundColor: "#155a9c",
+          },
         }}
       >
         <NavigationIcon />
@@ -138,6 +141,9 @@ const MovieDetails = ({ movie }) => {
           position: "fixed",
           bottom: "1em",
           right: "1em",
+          "&:hover": {
+            backgroundColor: "#155a9c",
+          },
         }}
       >
         <NavigationIcon />
