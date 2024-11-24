@@ -1,14 +1,13 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getActorDetails } from "../api/tmdb-api"; // 引入获取演员详情的API函数
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import { Avatar } from "@mui/material";
+import { Typography, Paper, Avatar, Button } from "@mui/material";
 import StarRate from "@mui/icons-material/StarRate";
 
 const CreditInfPage = () => {
   const { id } = useParams(); // 获取URL中的演员ID
+  const navigate = useNavigate(); // 获取导航功能
 
   // 获取演员详细信息
   const { data: actor, error, isLoading } = useQuery(
@@ -21,6 +20,16 @@ const CreditInfPage = () => {
 
   return (
     <Paper sx={{ padding: 2 }}>
+      {/* 返回按钮 */}
+      <Button 
+        variant="contained" 
+        onClick={() => navigate(-1)}  // 返回上一页
+        sx={{ marginBottom: 2 }}
+      >
+        Back
+      </Button>
+
+      {/* 演员头像 */}
       <Avatar
         alt={actor.name}
         src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
