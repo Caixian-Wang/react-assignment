@@ -228,7 +228,36 @@ export const getMovie = (args) => {
         throw error;
       });
   };
-
+  export const getCreditPlayedMovies = ({ queryKey }) => {
+    const [, idPart] = queryKey;
+  
+    if (!idPart || !idPart.id) {
+      throw new Error("Actor ID is required to fetch movies.");
+    }
+  
+    const { id } = idPart;
+  
+    return fetch(
+      `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then(async (response) => {
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.status_message || "Something went wrong");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        return {
+          ...data,
+          cast: data.cast || [], // 确保 cast 存在
+        };
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error.message);
+        throw error;
+      });
+  };
   export const getProductionCountries = () => {
     return fetch(
       "https://api.themoviedb.org/3/movie/production_countries/list?api_key=" +
