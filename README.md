@@ -9,39 +9,62 @@ Name: Caixian Wang (20108795)
 This repository contains a movie-related web application built with React. It features a variety of pages and components for browsing, viewing details, and interacting with movies, including functionality for adding reviews, exploring similar movies, and managing favorites. The app uses data from The Movie Database (TMDB) API to provide information on movies, TV shows, and related media. It also incorporates features such as a custom spinner for loading states and a dynamic movie list display. The project is organized into components, contexts, hooks, and pages to ensure scalability and maintainability.
 
 ### Features.
-+ Feature 1: Show the trending and popular movies.
-+ Feature 2: Click the Similar button, show the similar movies.
-+ Feature 3: Click the Recommendations button, show the Recommendations movies.
++ Feature 1: Two additional static endpoints from TMDB  included  the trending and popular movies.
+
+![](image\QQ20241124-141358.png)
+
+![](image\QQ20241124-141427.png)
+
++ Feature 2: One parameterised endpoint  is included. Click the Similar button, show the similar movies.
+
+ ![](image\QQ20241124-141705.png)
+
+
+
+![](image\QQ20241124-141810.png)
+
++ Feature 3: Another parameterised endpoint  is included. Click the Recommendations button, show the Recommendations movies.
 + Feature 4:  Click the name of movie‘s credit，then show the information of the credit.
+
 + Feature 5:  When you are in the credit-information page, you can click the movies that he or she participate to learn more information.
 
-## Setup requirements.
+![](image\QQ20241124-142533.png)
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+
 
 ## API endpoints.
 
-[ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.] 
-
-e.g.
-+ Discover list of movies - discover/movie
-+ Movie details - movie/:id
-+ Movie genres = /genre/movie/list
++ **Trending Movies**: Retrieves the list of currently trending movies.
+  Pathname: `/movie/trending`
++ **Popular Movies**: Retrieves the list of currently popular movies.
+  Pathname: `/movie/popular`
++ **Movie Credits**: Fetches the cast and crew for a specific movie by ID.
+  Pathname: `/movie/:id/credits`
++ **Similar Movies**: Fetches the movies that be similar to the movie by ID.
+  Pathname: `/movie/:id/similar`
++ **Recommendations**: Fetches movie recommendations based on a specific movie by ID.
+  Pathname: `/movie/:id/recommendations`
++ **People Movie Credits**: Get the movie credits for a person by ID.
+  Pathname: `/person/:id/movie_credits`
 
 ## Routing.
 
 [ List the __new routes__ supported by your app and state the associated page.]
 
-+ /blogs - displays all published blogs.
-+ /blogs/:id - displays a particular blog.
-+ /blogs/:id/comments - detail view of a particular blog and its comments.
-+ etc.
-
-[If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
++ /movies/trending  ``TrendingMoviesPage``
++ /movies/popular  ``PopularMoivesPage``
++ /movies/:id/recommendations  ``MovieRecommendationPage``
++ /movies/:id/similars  ``MovieSimilarPage``
++ /credits/:id/creditInf   ``CreditInfPage``  
 
 ## Independent learning (If relevant).
 
-Itemize the technologies/techniques you researched independently and adopted in your project, 
-i.e. aspects not covered in the lectures/labs. Include the source code filenames that illustrate these 
-(we do not require code excerpts) and provide references to the online resources that helped 
+**Material-UI Pagination Component**
 
+- Integrated the `Pagination` component from Material-UI to enable users to navigate between pages of movies.
+- Customized the component to fit the design of the application.
+
+**Dynamic Data Slicing**
+
+Used JavaScript’s slice() method to display a fixed number of movies per page (17 movies per page).
+Calculated the total number of pages based on the total number of movies.
